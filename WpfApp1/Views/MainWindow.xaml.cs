@@ -50,20 +50,5 @@ namespace VotingApp.Views
             }
         }
 
-        // 🔧 Примерна функция за добавяне на глас
-        private void SubmitVote(VoteType voteType, int votingResultId)
-        {
-            using (var context = new VotingContext())
-            {
-                var vote = new Vote
-                {
-                    Type = voteType,
-                    VotingResultId = votingResultId
-                };
-
-                context.Votes.Add(vote);
-                context.SaveChanges();
-            }
-        }
     }
 }

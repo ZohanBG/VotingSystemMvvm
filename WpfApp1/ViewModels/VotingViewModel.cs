@@ -21,5 +21,22 @@ namespace VotingApp.ViewModels
         public int AbstainVotes => _currentResult.Votes.Count(v => v.Type == VoteType.Abstain);
 
         public DateTime Deadline => _currentResult.VotingDeadline;
+
+
+        // 🔧 Примерна функция за добавяне на глас
+        private void SubmitVote(VoteType voteType, int votingResultId)
+        {
+            using (var context = new VotingContext())
+            {
+                var vote = new Vote
+                {
+                    Type = voteType,
+                    VotingResultId = votingResultId
+                };
+
+                context.Votes.Add(vote);
+                context.SaveChanges();
+            }
+        }
     }
 }
